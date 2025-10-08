@@ -1,0 +1,44 @@
+<div class="restaurante-header">
+    <h2>{{restaurante.nombre}}</h2>
+    <p>Tipo de cocina: {{restaurante.cocina}}</p>
+</div>
+
+<hr>
+
+<div class="reviews-section">
+    <h3>Opiniones</h3>
+    {{#if reviews}}
+        {{#each reviews}}
+        <div class="review-card">
+            <p><strong>{{this.usuario.nombre}}</strong> - Calificación: {{this.calificacion}} ⭐</p>
+            <p>"{{this.comentario}}"</p>
+        </div>
+        {{/each}}
+    {{else}}
+        <p>Aún no hay opiniones. ¡Sé el primero!</p>
+    {{/if}}
+</div>
+
+<hr>
+
+<div class="form-section">
+    <h3>Deja tu opinión</h3>
+    <form action="/review" method="POST">
+        <input type="hidden" name="restauranteId" value="{{restaurante.id}}">
+
+        <label for="usuarioId">¿Quién eres?</label>
+        <select name="usuarioId" id="usuarioId" required>
+            {{#each usuarios}}
+            <option value="{{this.id}}">{{this.nombre}}</option>
+            {{/each}}
+        </select>
+
+        <label for="calificacion">Calificación (1-5)</label>
+        <input type="number" name="calificacion" id="calificacion" min="1" max="5" required>
+
+        <label for="comentario">Comentario</label>
+        <textarea name="comentario" id="comentario" rows="3" required></textarea>
+
+        <button type="submit">Enviar Review</button>
+    </form>
+</div>

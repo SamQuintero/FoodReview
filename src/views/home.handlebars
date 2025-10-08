@@ -1,0 +1,9 @@
+<h2>Nuestros Restaurantes</h2>
+<div class="card-container">
+    {{#each restaurantes}}
+    <a href="/restaurante/{{this.id}}" class="card">
+        <h3>{{this.nombre}}</h3>
+        <p>Cocina: {{this.cocina}}</p>
+    </a>
+    {{/each}}
+</div>
