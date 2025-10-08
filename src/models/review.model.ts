@@ -1,4 +1,7 @@
-export interface Usuario {
+export interface Review {
     id: number;
-    nombre: string;
+    usuarioId: number;
+    restauranteId: number;
+    calificacion: number; // de 1 a 5
+    comentario: string;
   }
